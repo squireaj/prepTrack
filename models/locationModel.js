@@ -5,7 +5,7 @@ var foodItem = require('./objectModel');
 var locationSchema = new mongoose.Schema({
 	"owner": String,
 	"locationTitle": String,
-	"objects": [{type: mongoose.Schema.Types.ObjectId, ref: 'gearItem'}],
+	"objects": [{type: mongoose.Schema.Types.ObjectId, ref: 'Object'}],
 	"userId" : {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 	// "subLocations": [newLocation] 
 });

@@ -70,23 +70,76 @@ app.listen(process.env.EXPRESS_PORT || port, function(){
 
 app.use(express.static(__dirname+'/public'));
 
+//**********                               **********
+//******************* Local Login *******************
+//**********                               ********** 
+
+passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password'
+}, function(username, password, done) {
+    console.log(username, password)
+    User.findOne({ email: username }).exec().then(function(user) {
+        if (!user) {
+            return done(null, false);
+            console.log('no user');
+        }
+        user.comparePassword(password).then(function(isMatch) {
+            if (!isMatch) {
+                console.log('no match');
+                return done(null, false);
+            }
+            return done(null, user);
+        });
+    });
+}));
+
+//**********                                       **********
+//******************* Authorization Check *******************
+//**********                                       ********** 
+
+var requireAuth = function(req, res, next) {
+    if (!req.isAuthenticated()) {
+        return res.status(403).send({message: "Logged In"   }).end();
+    }
+    return next();
+}
+
+//**********                                         **********
+//******************* serialize/deserialize *******************
+//**********                                         ********** 
+
+passport.serializeUser(function(user, done) {
+  done(null, user._id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function (err, user) {
+    done(err, user);
+  });
+});
+
 //**********                             **********
 //******************* Endpoints *******************
 //**********                             ********** 
 
 //@@@@@ Auth @@@@@
 
+app.post('/api/users/', ServerUserCtrl.createUser);
+app.post('/api/users/auth', passport.authenticate('local'), function(req, res) {
+    console.log("Logged In"); 
+    return res.status(200).end();
+});
+
 //@@@@@ Location @@@@@
 
 app.post('/api/newlocation', ServerLocationCtrl.createlocation);
-// app.get('/api/getlocations', ServerLocationCtrl.getlocations);
-// app.get('/api/getlocation/:id', ServerLocationCtrl.getlocation);
+app.get('/api/getlocations', ServerLocationCtrl.getlocations);
+app.get('/api/getlocation/:_id', ServerLocationCtrl.getlocation);
 
 // //@@@@@ Object @@@@@
 
-// app.post('/api/newlocation', ServerLocationCtrl.newlocation);
-// app.get('/api/getlocations', ServerLocationCtrl.getlocations);
-// app.get('/api/getlocation/:id', ServerLocationCtrl.getlocation);
+// app.post('/api/tracks/:track_id/artists/:artist_id', ServerObjectCtrl.createObject)
 
 
 
