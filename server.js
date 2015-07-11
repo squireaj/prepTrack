@@ -139,8 +139,7 @@ app.get('/api/getlocation/:_id', ServerLocationCtrl.getlocation);
 
 // //@@@@@ Object @@@@@
 
-// app.post('/api/tracks/:track_id/artists/:artist_id', ServerObjectCtrl.createObject)
-
+app.post('/api/locations/:User_id', ServerObjectCtrl.addObjectToLocation);
 
 
 
