@@ -1,9 +1,20 @@
 var Location = require('../models/locationModel.js'); 
+var User = require('../models/userModel.js');
 
 module.exports = {
 
-  //******************************************************** Create New Location 
+  //******************************************************** Create New Location & Add to User
 
+   addLocationToUser: function(req, res) {
+    User.findByIdAndUpdate(req.params.User_id, {$push:{locations: req.body}}, {new: true}, function(err, new_location) {
+     if (err) {
+       return res.status(500).end();
+     }
+       return res.json(new_location);
+     });
+    },
+
+   //******************************************************** Create New Location 
   createlocation: function(req, res) {
     var newLocation = new Location(req.body);
     // console.log("NewLocation", req.body); 

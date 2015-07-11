@@ -132,7 +132,7 @@ app.post('/api/users/auth', passport.authenticate('local'), function(req, res) {
 });
 
 //@@@@@ Location @@@@@
-
+app.post('/api/users/:User_id', ServerLocationCtrl.addLocationToUser);
 app.post('/api/newlocation', ServerLocationCtrl.createlocation);
 app.get('/api/getlocations', ServerLocationCtrl.getlocations);
 app.get('/api/getlocation/:_id', ServerLocationCtrl.getlocation);
