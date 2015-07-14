@@ -1,18 +1,28 @@
 var Location = require('../models/locationModel.js'); 
 var User = require('../models/userModel.js');
-
+var q = require('q');
 module.exports = {
 
   //******************************************************** Create New Location & Add to User
 
    addLocationToUser: function(req, res) {
-    User.findByIdAndUpdate(req.params.User_id, {$push:{locations: req.body}}, {new: true}, function(err, new_location) {
+    var deferred = q.defer();
+    var newLocation = new Location(req.body);
+    newLocation.save(function(err, newLocation) {
+      if (err) {
+        console.log(err)
+        return res.status(500).end();
+      }
+       console.log("new Location", newLocation);  
+    }).then  //                                                        Here * | 
+    (User.findByIdAndUpdate(req.params.User_id, {$push:{locations: window.location._id}}, {new: true}, function(err, new_location) {
      if (err) {
        return res.status(500).end();
      }
-       return res.json(new_location);
-     });
-    },
+       deferred.resolve(res.json(new_location));
+     }));
+      return deferred.promise;
+     },
 
    //******************************************************** Create New Location 
   createlocation: function(req, res) {

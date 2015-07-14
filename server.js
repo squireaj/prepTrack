@@ -1,6 +1,6 @@
-//**********                                              **********
-//******************* definititions and requires *******************
-//**********                                              ********** 
+//**********        *                            *        **********
+//******************* Definititions and Requires *******************
+//**********        *                            *        ********** 
 
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -13,9 +13,9 @@ var cookieParser = require('cookie-parser');
 var bson = require('bson');
 var app = express();
 
-//**********                              **********
+//**********        *            *        **********
 //******************* Middleware *******************
-//**********                              **********          
+//**********        *            *        **********          
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -29,25 +29,25 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-//**********                               **********
+//**********        *             *        **********
 //******************* Controllers *******************
-//**********                               ********** 
+//**********        *             *        ********** 
 
 var ServerLocationCtrl = require('./controllers/ServerLocationCtrl');
 var ServerObjectCtrl = require('./controllers/ServerObjectCtrl');
 var ServerUserCtrl = require('./controllers/ServerUserCtrl');
 
-//**********                          **********
+//**********        *        *        **********
 //******************* Models *******************
-//**********                          ********** 
+//**********        *        *        ********** 
 
 var Location = require('./models/locationModel');
 var Object = require('./models/objectModel');
 var User = require('./models/userModel');
 
-//**********                            **********
+//**********        *          *        **********
 //******************* Database *******************
-//**********                            ********** 
+//**********        *          *        ********** 
 
 var mongoUri = "mongodb://localhost:27017/preptrack";
 mongoose.connect(mongoUri);
@@ -55,24 +55,24 @@ mongoose.connection.once('open', function() {
     console.log("Connected on " + mongoUri);
 });
 
-//**********                        **********
+//**********        *      *        **********
 //******************* Port *******************
-//**********                        ********** 
+//**********        *      *        ********** 
 
 var port = 8080; 
 app.listen(process.env.EXPRESS_PORT || port, function(){
     console.log("The Wolverine Pack is hunting on port ", port); 
 });
 
-//**********                          **********
+//**********        *        *        **********
 //******************* Static *******************
-//**********                          ********** 
+//**********        *        *        ********** 
 
 app.use(express.static(__dirname+'/public'));
 
-//**********                               **********
+//**********        *             *        **********
 //******************* Local Login *******************
-//**********                               ********** 
+//**********        *             *        ********** 
 
 passport.use(new LocalStrategy({
     usernameField: 'email',
@@ -94,9 +94,9 @@ passport.use(new LocalStrategy({
     });
 }));
 
-//**********                                       **********
+//**********        *                     *        **********
 //******************* Authorization Check *******************
-//**********                                       ********** 
+//**********        *                     *        ********** 
 
 var requireAuth = function(req, res, next) {
     if (!req.isAuthenticated()) {
@@ -105,9 +105,9 @@ var requireAuth = function(req, res, next) {
     return next();
 }
 
-//**********                                         **********
+//**********        *                       *        **********
 //******************* serialize/deserialize *******************
-//**********                                         ********** 
+//**********        *                       *        ********** 
 
 passport.serializeUser(function(user, done) {
   done(null, user._id);
@@ -119,9 +119,9 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-//**********                             **********
+//**********        *           *        **********
 //******************* Endpoints *******************
-//**********                             ********** 
+//**********        *           *        ********** 
 
 //@@@@@ Auth @@@@@
 
@@ -132,6 +132,7 @@ app.post('/api/users/auth', passport.authenticate('local'), function(req, res) {
 });
 
 //@@@@@ Location @@@@@
+
 app.post('/api/users/:User_id', ServerLocationCtrl.addLocationToUser);
 app.post('/api/newlocation', ServerLocationCtrl.createlocation);
 app.get('/api/getlocations', ServerLocationCtrl.getlocations);

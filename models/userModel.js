@@ -7,7 +7,7 @@ var userSchema = new Schema({
 	name: {type: String},
 	email: {type: String},
 	password: {type: String},
-	locations: []
+	locations: [{type: mongoose.Schema.Types.ObjectId, ref: 'Location'}]
 });
 
 userSchema.pre('save', function(next) {
