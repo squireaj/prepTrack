@@ -2,6 +2,9 @@ var User = require('../models/userModel.js');
 
 module.exports = {
 
+//@-@-@-@-@-@-@-@-@-@ - Auth - @-@-@-@-@-@-@-@-@-@
+
+//-- Create New User
   createUser: function(req, res) {
     console.log("create users api hit"); 
     User.findOne({ email: req.body.email })

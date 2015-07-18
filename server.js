@@ -123,24 +123,57 @@ passport.deserializeUser(function(id, done) {
 //******************* Endpoints *******************
 //**********        *           *        ********** 
 
-//@@@@@ Auth @@@@@
+//- - - ServerUserCtrl.js - - -
 
+//@-@-@-@-@-@-@-@-@-@ - Auth - @-@-@-@-@-@-@-@-@-@
+
+//-- Create New User
 app.post('/api/users/', ServerUserCtrl.createUser);
+
+//-- Authenticate User
 app.post('/api/users/auth', passport.authenticate('local'), function(req, res) {
     console.log("Logged In"); 
     return res.status(200).end();
 });
 
-//@@@@@ Location @@@@@
+//- - - ServerLocationCtrl.js - - -
 
-app.post('/api/users/:User_id', ServerLocationCtrl.addLocationToUser);
-app.post('/api/newlocation', ServerLocationCtrl.createlocation);
-app.get('/api/getlocations', ServerLocationCtrl.getlocations);
-app.get('/api/getlocation/:_id', ServerLocationCtrl.getlocation);
+//@-@-@-@-@-@-@-@-@-@ - General Location - @-@-@-@-@-@-@-@-@-@
 
-// //@@@@@ Object @@@@@
+//-- Create New Location
+app.post('/api/newlocation', ServerLocationCtrl.newLocation);
 
+//-- Get All Locations 
+app.get('/api/getlocations', ServerLocationCtrl.getLocations);
+
+//-- Get Single Location
+app.get('/api/getlocation/:_id', ServerLocationCtrl.getLocation);
+
+//@-@-@-@-@-@-@-@-@-@ - User Location - @-@-@-@-@-@-@-@-@-@
+
+//-- Add location to user
+app.post('/api/users/:User_id/locations/:Location_id', ServerLocationCtrl.pushLocationToUser);
+
+//-- Get Users Locations 
+app.get('/api/users/:User_id', ServerLocationCtrl.getUsersLocations);
+
+//- - - ServerObjectCtrl.js - - -
+
+//@-@-@-@-@-@-@-@-@-@ - Object - @-@-@-@-@-@-@-@-@-@
+
+//-- Create New Object and add to Location
 app.post('/api/locations/:User_id', ServerObjectCtrl.addObjectToLocation);
+
+
+
+
+
+
+
+
+
+
+
 
 
 

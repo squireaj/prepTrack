@@ -4,7 +4,9 @@ var objects = require('../models/objectModel.js')
 
 module.exports = {
 
-  //******************************************************** Create New Object and add to Location
+//@-@-@-@-@-@-@-@-@-@ - Object - @-@-@-@-@-@-@-@-@-@
+
+//-- Create New Object and add to Location
 
    addObjectToLocation: function(req, res) {
     User.findById(req.params.User_id).populate(objects, req.body).exec(function(err, new_object) {

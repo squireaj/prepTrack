@@ -6,8 +6,11 @@ var locationSchema = new mongoose.Schema({
 	"owner": String,
 	"locationTitle": String,
 	"objects": [],
-	"userId" : {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
-	// "subLocations": [newLocation] 
+	"subLocations": [] 
 });
 
 module.exports = mongoose.model('Location', locationSchema);
+
+
+
+      
