@@ -126,7 +126,7 @@
     <div ui-view></div>
     </div>
     </div>
-    
+
          <!-- @-@-@-@-@-@-@-@-@-@ - Google Analytics - @-@-@-@-@-@-@-@-@-@ -->
          <!-- @-@-@-@-@ - change UA-XXXXX-X to be your site's ID - @-@-@-@-@ -->
       
@@ -140,13 +140,16 @@
            ga('send', 'pageview');
         </script>
 
+        <script src="assets/js/angular.js"></script>
+        <script src="assets/js/angular-animate.js"></script>
+
         <!-- @-@-@-@-@-@-@-@-@-@ - Jquery - @-@-@-@-@-@-@-@-@-@ -->
  
-        <script src="scripts/jquery.js"></script>
+        <script src="assets/js/jquery.js"></script>
 
         <!-- @-@-@-@-@-@-@-@-@-@ - Bootstrap - @-@-@-@-@-@-@-@-@-@ -->  
 
-        <script src="scripts/ui-bootstrap-tpls.js"></script>
+        <script src="assets/js/ui-bootstrap-tpls.js"></script>
         <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
 
         <!-- @-@-@-@-@-@-@-@-@-@ - Angular Ui Router - @-@-@-@-@-@-@-@-@-@ -->
@@ -157,25 +160,21 @@
 
         <script src="assets/js/init.js"></script>
         <script src="app/app.js"></script>
-        <script src="materialize/css/materialize.js"></script>
+        <script src="assets/materialize/css/materialize.js"></script>
 
         <!-- @-@-@-@-@-@-@-@-@-@ - Controllers - @-@-@-@-@-@-@-@-@-@ -->
 
-        <script src="scripts/controllers/mainCtrl.js"></script>
-        <script src="scripts/controllers/DashboardCtrl.js"></script>
-        <script src="scripts/controllers/AddFoodItemCtrl.js"></script>
-        <script src="scripts/controllers/NewLocationCtrl.js"></script>
-        <script src="scripts/controllers/WhatToStoreCtrl.js"></script>
-        <script src="scripts/controllers/AddGearItemCtrl.js"></script>
+<!--         // <script src="scripts/controllers/mainCtrl.js"></script>
+        // <script src="scripts/controllers/DashboardCtrl.js"></script>
+        // <script src="scripts/controllers/AddFoodItemCtrl.js"></script>
+        // <script src="scripts/controllers/NewLocationCtrl.js"></script>
+        // <script src="scripts/controllers/WhatToStoreCtrl.js"></script>
+        // <script src="scripts/controllers/AddGearItemCtrl.js"></script> -->
 
         <!-- @-@-@-@-@-@-@-@-@-@ - Services - @-@-@-@-@-@-@-@-@-@ -->
 
         <script src="scripts/services/alert.js"></script>
-        <script src="scripts/services/authtoken.js"></script>
-        <script src="scripts/services/authInterceptor.js"></script>
         <script src="scripts/services/auth.js"></script>
-        <script src="scripts/services/dashboardService.js"></script>
-        <script src="scripts/services/UserService.js"></script>
 
   </body>
 </html>
