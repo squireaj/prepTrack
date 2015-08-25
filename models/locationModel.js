@@ -1,3 +1,7 @@
+//                  //
+//  LOCATION MODEL  //
+//                  //
+
 var mongoose = require('mongoose');
 var foodItem = require('./objectModel');
 

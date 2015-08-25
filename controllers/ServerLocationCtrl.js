@@ -1,3 +1,7 @@
+//                              //
+//  SERVER LOCATION CONTROLLER  //
+//                              //
+
 var Location = require('../models/locationModel.js'); 
 var User = require('../models/userModel.js');
 
@@ -66,16 +70,6 @@ module.exports = {
     }
 }
 
-//  function(req, res) {
-//   Track.findOne({_id: req.params.track_id})
-//   .populate('artists')
-//   .exec().then(function(track) {
-//     if (!track) {
-//       return res.status(404).end();
-//     }
-//     return res.json(track);
-//   });
-// });
 
 
 

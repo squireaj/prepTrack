@@ -1,5 +1,8 @@
-var User = require('../models/userModel.js'); 
+//                          //
+//  SERVER USER CONTROLLER  //
+//                          //
 
+var User = require('../models/userModel.js'); 
 module.exports = {
 
 //@-@-@-@-@-@-@-@-@-@ - Auth - @-@-@-@-@-@-@-@-@-@
@@ -11,7 +14,7 @@ module.exports = {
       .exec()
       .then(function(user) {
        
-        //*********if we found a user, it's a duplicate
+        // - if we found a user, it's a duplicate
 
         if (user) {
           return res.status(400).json({message: "User with this email already exists."});
@@ -22,7 +25,7 @@ module.exports = {
           return res.status(400).json({message: "Your password must be longer than 4 characters."});
         }
 
-        //**********otherwise, create the user
+        // - otherwise, create the user
         
         var user = new User(req.body);
         console.log("creating new user"); 

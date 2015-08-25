@@ -1,3 +1,7 @@
+//                            //
+//  SERVER OBJECT CONTROLLER  //
+//                            //
+
 var Location = require('../models/objectModel.js'); 
 var User = require('../models/userModel.js')
 var objects = require('../models/objectModel.js')

@@ -1,3 +1,7 @@
+//                //
+//  OBJECT MODEL  //
+//                //
+
 var mongoose = require('mongoose');
 
 var objectSchema = new mongoose.Schema({
