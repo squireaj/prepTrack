@@ -1,21 +1,15 @@
 <!doctype html>
-<html class="no-js">
+<html`>
   <head>
     <meta charset="utf-8">
     <title>Prep Track</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/angularjs-toaster/toaster.css" />
-    <link rel="stylesheet" href="bower_components/animate.css/animate.css" /
+
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/toaster.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/materialize.css">
+    <link rel="stylesheet" href="assets/css/main.css">
     
-    <link rel="stylesheet" href="styles/materialize.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
-    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
   </head>
   <body ng-app="prepTrack" ng-controller="MainCtrl">  
 <!-- Modal Start -->
@@ -86,8 +80,8 @@
 </ul>
   <nav gray darken-4>
     <div class="nav-wrapper">
-      <a ui-sref="home" class="left hide-on-small-only" style="focus; background-color: #2B2D2A;"><img src="images/logo.png" height="58px" style="padding-top: 0px; padding-bottom:3px; padding-left: 0px; position: relative;"></a>
-      <a ui-sref="home" style="focus; background-color: #2B2D2A;"><img src="images/title.png" height="25px" style="margin-top: 0px; margin-left: 0px; padding-left: 13px; position: relative;" class=""></a>
+      <a ui-sref="home" class="left hide-on-small-only" style="focus; background-color: #2B2D2A;"><img src="assets/img/logo.png" height="58px" style="padding-top: 0px; padding-bottom:3px; padding-left: 0px; position: relative;"></a>
+      <a ui-sref="home" style="focus; background-color: #2B2D2A;"><img src="assets/img/title.png" height="25px" style="margin-top: 0px; margin-left: 0px; padding-left: 13px; position: relative;" class=""></a>
       <a href="#" data-activates="mobile-demo" class="right button-collapse"><i class="mdi-navigation-menu"></i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a class="dropdown-button" data-activates="dropdown2">Inventory<i class="mdi-hardware-keyboard-arrow-down right" style="font-size: 20px;"></i></a></li>
@@ -127,19 +121,6 @@
     </div>
     </div>
 
-         <!-- @-@-@-@-@-@-@-@-@-@ - Google Analytics - @-@-@-@-@-@-@-@-@-@ -->
-         <!-- @-@-@-@-@ - change UA-XXXXX-X to be your site's ID - @-@-@-@-@ -->
-      
-         <script>
-           !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-           (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-           r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-           }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-           ga('create', 'UA-XXXXX-X');
-           ga('send', 'pageview');
-        </script>
-
         <script src="assets/js/angular.js"></script>
         <script src="assets/js/angular-animate.js"></script>
 
@@ -150,7 +131,6 @@
         <!-- @-@-@-@-@-@-@-@-@-@ - Bootstrap - @-@-@-@-@-@-@-@-@-@ -->  
 
         <script src="assets/js/ui-bootstrap-tpls.js"></script>
-        <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
 
         <!-- @-@-@-@-@-@-@-@-@-@ - Angular Ui Router - @-@-@-@-@-@-@-@-@-@ -->
 
@@ -160,11 +140,12 @@
 
         <script src="assets/js/init.js"></script>
         <script src="app/app.js"></script>
-        <script src="assets/materialize/css/materialize.js"></script>
+        <script src="assets/materialize/js/materialize.js"></script>
 
         <!-- @-@-@-@-@-@-@-@-@-@ - Controllers - @-@-@-@-@-@-@-@-@-@ -->
 
-<!--         // <script src="scripts/controllers/mainCtrl.js"></script>
+        <script src="app/main/mainCtrl.js"></script>
+<!--     
         // <script src="scripts/controllers/DashboardCtrl.js"></script>
         // <script src="scripts/controllers/AddFoodItemCtrl.js"></script>
         // <script src="scripts/controllers/NewLocationCtrl.js"></script>
@@ -173,8 +154,8 @@
 
         <!-- @-@-@-@-@-@-@-@-@-@ - Services - @-@-@-@-@-@-@-@-@-@ -->
 
-        <script src="scripts/services/alert.js"></script>
-        <script src="scripts/services/auth.js"></script>
+<!--         // <script src="scripts/services/alert.js"></script>
+        // <script src="scripts/services/auth.js"></script> -->
 
   </body>
 </html>
