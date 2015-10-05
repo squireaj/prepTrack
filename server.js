@@ -63,8 +63,8 @@ mongoose.connection.once('open', function() {
 //******************* Port *******************
 //**********        *      *        ********** 
 
-var port = 8080; 
-app.listen(process.env.EXPRESS_PORT || port, function(){
+var port = process.env.EXPRESS_PORT || 8080; 
+app.listen(port, function(){
     console.log("The Wolverine Pack is hunting on port ", port); 
 });
 

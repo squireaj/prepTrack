@@ -33,14 +33,18 @@ module.exports = {
 //-- Get Single Location
 
     getLocation: function(req, res) {
-      Location.findOne({_id: req.params._id})
-      .populate('Location')
-      .exec().then(function(Location) {
-        if (!Location) {
-          return res.status(404).end();
-        }
-        return res.json(Location);
-        });
+      // Location.findOne({_id: req.params._id})
+      // .populate('Location')
+      // .exec().then(function(Location) {
+      //   if (!Location) {
+      //     return res.status(404).end();
+      //   }
+      //   return res.json(Location);
+      //   });
+    Location.findById({_id: req.params._id}, function(err, res){
+      if (err)return res.status(500).json(err)
+      return res.status(200).json(res)
+    })
     },
 
 //@-@-@-@-@-@-@-@-@-@ - User Location - @-@-@-@-@-@-@-@-@-@

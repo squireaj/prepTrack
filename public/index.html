@@ -1,161 +1,20 @@
 <!doctype html>
-<html`>
-  <head>
-    <meta charset="utf-8">
-    <title>Prep Track</title>
+<head>
+  <title>PrepTrack</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body ng-app="prepTrack">
 
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/css/toaster.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet" href="assets/css/materialize.css">
-    <link rel="stylesheet" href="assets/css/main.css">
-    
-  </head>
-  <body ng-app="prepTrack" ng-controller="MainCtrl">  
-<!-- Modal Start -->
-  <div id="modal1" class="modal">
-    <div class="align center modal-content">
-    <div class="row">
-      <form name="register" class="col s12" novalidate>
-        <div ng-show="!newReg" class="row">
-          <h3>Login</h3>
-            <div class="input-field col s12" style="padding-right: 10%;">
-              <i class="mdi-communication-email prefix"></i>
-              <input name="email" ng-model="email" id="email" type="email" class="validate" required>
-              <label for="email">Email</label>
-            </div>
-            <div class="input-field col s12" style="padding-right: 10%;">
-            <i class="mdi-action-lock prefix"></i>
-              <input name="password" id="password" type="password" class="validate" ng-model="password">
-              <label for="password">Password</label>
-            </div>
-            <div><button ng-disabled="register.email.$invalid" ng-show="!newReg" ng-click="submitLogIn()" class="left btn waves-effect waves-light" type="submit" name="action" style="margin-left: 55px; margin-top: 35px;">Sign In</button>
-            </div>
-            <div><button ng-click="showReg()" ng-show="!newReg" class="left btn waves-effect waves-light" style="padding: 0; padding-left: 24px; padding-right: 24px; margin-left: 18px; margin-top: 35px;">Register</button>
-            </div>
-        </div>
-        </form>
-        <!-- Registration Form -->
-    <form name="register" class="col s12" novalidate>
-        <div ng-show="newReg" class="row">
-      <h3>Register</h3>
-            <div class="input-field col s12" style="padding-right: 10%;">
-              <i class="mdi-communication-email prefix"></i>
-              <input name="reg_email" ng-model="reg_email" id="email" type="email" class="validate" required>
-              <label for="email">Email</label>
-            </div>
-            <div class="input-field col s12" style="padding-right: 10%;">
-              <i class="mdi-action-lock-outline prefix"></i>
-              <input id="password" type="password" class="validate" ng-model="reg_password" name="reg_password" required>
-              <label for="password">Password</label>
-            </div>
-            <div class="input-field col s12" style="padding-right: 10%;">
-              <i class="mdi-action-lock prefix"></i>
-              <input id="password" type="password" class="validate" ng-model="password_confirm" name="password_confirm" validate-equals='reg_password'>
-              <label for="password">Confirm Password</label>
-            </div>
-            <div ng-show="register.password_confirm.$dirty && register.password_confirm.$invalid" class="input-field col s12" style="padding-right: 10%;">
-              <i class="mdi-alert-warning prefix yellow-text  text-darken-2"></i>
-              <input disabled value=" Passwords don't match!" id="icon_prefix" type="text" class="validate" style="border-bottom: 0; margin-bottom: 0;" id="disabled">
-              <label for="icon_prefix disabled"></label>
-            </div>
-            <div><button ng-disabled="register.reg_email.$invalid || register.reg_password.$invalid || register.password_confirm.$pristine || register.password_confirm.$invalid" ng-show="newReg" ng-click="submit()"class="left btn waves-effect waves-light" type="submit" name="action" style="margin-left: 55px; margin-top: 33px; padding: 0; padding-left: 24px; padding-right: 24px;" href="/">Register</button>
-            </div>
-             <div><button ng-show="newReg" ng-click="showReg()" class="left btn waves-effect waves-light" type="submit" name="action" style="margin-left: 18px; margin-top: 33px;">Sign In</button>
-            </div>
-        </div>
-    </form>
-  </div>
-    </div>
-  </div>
-    <!-- EndModal -->
-
-    <!--   Nav -->  
-<div class="navbar-fixed">
-<ul id="dropdown2" class="dropdown-content">
-  <li><a href="#!">Home</a></li>
-  <li><a href="#!">Go Bag</a></li>
-  <li class="divider"></li>
-  <li><a href="#!">Cabin</a></li>
-</ul>
-  <nav gray darken-4>
-    <div class="nav-wrapper">
-      <a ui-sref="home" class="left hide-on-small-only" style="focus; background-color: #2B2D2A;"><img src="assets/img/logo.png" height="58px" style="padding-top: 0px; padding-bottom:3px; padding-left: 0px; position: relative;"></a>
-      <a ui-sref="home" style="focus; background-color: #2B2D2A;"><img src="assets/img/title.png" height="25px" style="margin-top: 0px; margin-left: 0px; padding-left: 13px; position: relative;" class=""></a>
-      <a href="#" data-activates="mobile-demo" class="right button-collapse"><i class="mdi-navigation-menu"></i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a class="dropdown-button" data-activates="dropdown2">Inventory<i class="mdi-hardware-keyboard-arrow-down right" style="font-size: 20px;"></i></a></li>
-        <li style="margin-left:0px"><a ui-sref="dashboard">Dashboard</a></li>
-        <li ng-hide="isAuthenticated()"><a class="modal-trigger" href="#modal1">Login/Register</a></li>
-        <li ng-show="isAuthenticated()" ng-click="logout()"><a href="/">Logout</a></li>
-      </ul>
-      <ul id="dropdown1" class="dropdown-content">
-    <li><a href="/">Gear</a></li>
-    <li class="divider"></li>
-      <li><a href="/">Tub B1</a></li>
-      <li><a href="/">Tub B2</a></li>
-      <li><a href="/">Tub B3</a></li>
-      <li class="divider"></li>
-    <li><a href="/">Food</a></li>
-    <li class="divider"></li>
-    <li><a href="/">Garage</a></li>
-    <li><a href="/">Tub A1</a></li>
-    <li><a href="/">Tub A2</a></li>
-    </ul>
-       <ul class="side-nav" id="mobile-demo">
-        <li><a ui-sref="dashboard">Dashboard</a></li>
-        <li><a class="dropdown-button" data-activates="dropdown1">Inventory<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
-        <li ng-hide="isAuthenticated()"><a class="modal-trigger" href="#modal1">Login/Register</a></li>
-        <li ng-click="logout()"><a href="/">Logout</a></li>
-      </ul>
-      </div>
-  </nav>
-</div>
-    <!-- EndNav -->
-
-
-    <!--    views -->
-    <div class="row" style="margin-bottom: 0; padding-bottom: 0;">
-    <div class="ui-view-container">
     <div ui-view></div>
-    </div>
-    </div>
 
-        <script src="assets/js/angular.js"></script>
-        <script src="assets/js/angular-animate.js"></script>
+<!-- Scripts -->
 
-        <!-- @-@-@-@-@-@-@-@-@-@ - Jquery - @-@-@-@-@-@-@-@-@-@ -->
- 
-        <script src="assets/js/jquery.js"></script>
+  <script src="assets/js/angular.js"></script>
+  <script src="assets/js/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.14/angular-ui-router.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/home/HomeCtrl.js"></script>
+  <script src="app/newLocation/newLocationService.js"></script>
+  <script src="app/newLocation/NewLocationCtrl.js"></script>
 
-        <!-- @-@-@-@-@-@-@-@-@-@ - Bootstrap - @-@-@-@-@-@-@-@-@-@ -->  
-
-        <script src="assets/js/ui-bootstrap-tpls.js"></script>
-
-        <!-- @-@-@-@-@-@-@-@-@-@ - Angular Ui Router - @-@-@-@-@-@-@-@-@-@ -->
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.14/angular-ui-router.js"></script>
-        
-        <!-- @-@-@-@-@-@-@-@-@-@ - Build - @-@-@-@-@-@-@-@-@-@ -->
-
-        <script src="assets/js/init.js"></script>
-        <script src="app/app.js"></script>
-        <script src="assets/materialize/js/materialize.js"></script>
-
-        <!-- @-@-@-@-@-@-@-@-@-@ - Controllers - @-@-@-@-@-@-@-@-@-@ -->
-
-        <script src="app/main/mainCtrl.js"></script>
-<!--     
-        // <script src="scripts/controllers/DashboardCtrl.js"></script>
-        // <script src="scripts/controllers/AddFoodItemCtrl.js"></script>
-        // <script src="scripts/controllers/NewLocationCtrl.js"></script>
-        // <script src="scripts/controllers/WhatToStoreCtrl.js"></script>
-        // <script src="scripts/controllers/AddGearItemCtrl.js"></script> -->
-
-        <!-- @-@-@-@-@-@-@-@-@-@ - Services - @-@-@-@-@-@-@-@-@-@ -->
-
-<!--         // <script src="scripts/services/alert.js"></script>
-        // <script src="scripts/services/auth.js"></script> -->
-
-  </body>
-</html>
+</body>

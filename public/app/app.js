@@ -6,11 +6,22 @@ var app = angular.module('prepTrack', ['ui.router']);
 	$urlRouterProvider.when('', '/');
     $urlRouterProvider.otherwise('/');
     $stateProvider
-      .state('main', {
+      .state('home', {
           url: '/',
-          templateUrl : 'app/main/mainView.html',
-          controller  : 'MainCtrl'
-      });
+          templateUrl : 'app/home/home.html',
+          controller  : 'HomeCtrl'
+      })
+      .state('newLocation',{
+        url: '/newLocation/:locationId',
+        templateUrl : 'app/newLocation/newLocationView.html',
+        controller : 'NewLocationCtrl',
+        resolve: {
+          newLocation: function($route, newLocationService){
+            console.log('GETTING IT')
+              return newLocationService.getLocation($route.current.params.locationId);
+          }
+        }
+      })
 	});
 })();
 
