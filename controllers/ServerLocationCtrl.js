@@ -41,9 +41,9 @@ module.exports = {
       //   }
       //   return res.json(Location);
       //   });
-    Location.findById({_id: req.params._id}, function(err, res){
+    Location.findById({_id: req.params._id}, function(err, resp){
       if (err)return res.status(500).json(err)
-      return res.status(200).json(res)
+      return res.status(200).json(resp)
     })
     },
 

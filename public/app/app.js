@@ -16,9 +16,9 @@ var app = angular.module('prepTrack', ['ui.router']);
         templateUrl : 'app/newLocation/newLocationView.html',
         controller : 'NewLocationCtrl',
         resolve: {
-          newLocation: function($route, newLocationService){
-            console.log('GETTING IT')
-              return newLocationService.getLocation($route.current.params.locationId);
+          newLocation: function(newLocationService, $stateParams){
+            console.log($stateParams.locationId) 
+              return newLocationService.getLocation($stateParams.locationId);
           }
         }
       })
