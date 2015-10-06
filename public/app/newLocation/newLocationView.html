@@ -1,1 +1,9 @@
-<h1>New Location</h1>
+<h1>{{locationTitle}}</h1>
+<h3>Add a new item</h3>
+<form>
+	<input type="text" placeholder="Item Title" ng-model="item.title">
+	<input type="text" placeholder="Grams of Carbs" ng-model="item.carbs">
+	<input type="text" placeholder="Grams of Protein" ng-model="item.protein">
+	<input type="text" placeholder="Grams of Fat" ng-model="item.fat">
+	<button ng-click="createNewItem(item)">create</button>
+</form>

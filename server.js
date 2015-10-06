@@ -132,7 +132,7 @@ passport.deserializeUser(function(id, done) {
 //@-@-@-@-@-@-@-@-@-@ - Auth - @-@-@-@-@-@-@-@-@-@
 
 //-- Create New User
-app.post('/api/users/', ServerUserCtrl.createUser);
+app.post('/api/users', ServerUserCtrl.createUser);
 
 //-- Authenticate User
 app.post('/api/users/auth', passport.authenticate('local'), function(req, res) {

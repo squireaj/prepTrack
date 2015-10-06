@@ -8,19 +8,12 @@ var objectSchema = new mongoose.Schema({
 	"owner": String,
 	"location": String,
 	"category": String,
-	"item" : String,
+	"title" : String,
+	"protein" : Number,
+	"carbs" : Number,
+	"fat" : Number,
 	"count" : Number,
-	"exDate": {type: Date }, 
-	"unit" : {type: String, enum:[
-		'lb',
-		'kg',
-		'l',
-		'qt',
-		'pt',
-		'oz',
-		'gal',
-		'units'
-	]}
+	"exDate": {type: Date }
 });
 
 module.exports = mongoose.model('Object', objectSchema);
