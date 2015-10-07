@@ -14,7 +14,6 @@ app.controller('HomeCtrl', function($scope, $state, newLocationService, userServ
 
 	$scope.logIn = function(email, password){
 		userService.login(email, password).then(function(res){
-			console.log(res.data)
 			$scope.user = res.data;
 			$scope.isuser = true
 		}, function(err){
@@ -31,5 +30,19 @@ app.controller('HomeCtrl', function($scope, $state, newLocationService, userServ
 
 	$scope.changeLocation = function(){
 		$state.go('newLocation')
+	};
+
+	$scope.toDash = function(){
+		$state.go('dash', {userId: $scope.user._id});
 	}
-});														
+
+});			
+
+
+
+
+
+
+
+
+

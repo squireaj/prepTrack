@@ -26,7 +26,6 @@ app.service('userService', function($http, $state){
 				password: password
 			} 
 		}).then(function(res){
-			console.log(res)
 			return res
 		}, function(err){
 			console.log("login Error" + err)
