@@ -1,11 +1,13 @@
 'use strict';
 var app = angular.module('prepTrack');
 app.service('userService', function($http, $state){
-	this.signUp = function(email, password){
+	this.signUp = function(name, email, password){
+		console.log(name, email, password)
 		return $http({
 			method: 'POST',
 			url: "http://localhost:9000/api/users",
 			data: {
+				name: name,
 				email: email,
 				password: password
 			}
@@ -24,9 +26,8 @@ app.service('userService', function($http, $state){
 				password: password
 			} 
 		}).then(function(res){
-			this.userId = res.data._id;
-			console.log(this.userId)
-			return res.data
+			console.log(res)
+			return res
 		}, function(err){
 			console.log("login Error" + err)
 		})

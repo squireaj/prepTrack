@@ -1,4 +1,21 @@
+<div ng-show="user">
+	<h3>{{user.name}} you are logged in!</h3>
+	<button ui-sref="dash">My Locations</button>
+</div>
 <h1>PrepTrack</h1>
+<h3>Sign Up</h3>
+<form ng-submit="register(name, email, password)">
+	<input type="text" placeholder="Name" ng-model="name">
+	<input type="text" placeholder="Email" ng-model="email">
+	<input type="text" placeholder="Password" ng-model="password">
+	<button>Sign Up</button>
+</form>
+<h3>Sign In</h3>
+<form ng-submit="logIn(logemail, logpassword)">
+	<input type="text" placeholder="Email" ng-model="logemail">
+	<input type="text" placeholder="Password" ng-model="logpassword">
+	<button>Sign In</button>
+</form>
 <h3>Create your first location</h3>
 <form ng-submit="createNewLocation(location);">
 <input type="text" placeholder="Location Name" ng-model="location.locationTitle">

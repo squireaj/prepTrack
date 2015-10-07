@@ -35,6 +35,7 @@ module.exports = {
           }
           res.json(new_user);
         })
+        req.login()
     })
   }
 

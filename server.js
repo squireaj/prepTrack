@@ -136,8 +136,14 @@ app.post('/api/users', ServerUserCtrl.createUser);
 
 //-- Authenticate User
 app.post('/api/users/auth', passport.authenticate('local'), function(req, res) {
-    console.log("Logged In"); 
-    return res.status(200).end();
+    console.log("Logged In" + req.user); 
+    return res.status(200).json(req.user).end();
+});
+
+//-- Logout
+app.get('/api/auth/logout', function(req, res) {
+    req.logout();
+    return res.redirect('/#login');
 });
 
 //- - - ServerLocationCtrl.js - - -
@@ -145,13 +151,13 @@ app.post('/api/users/auth', passport.authenticate('local'), function(req, res) {
 //@-@-@-@-@-@-@-@-@-@ - General Location - @-@-@-@-@-@-@-@-@-@
 
 //-- Create New Location
-app.post('/api/newlocation', ServerLocationCtrl.newLocation);
+app.post('/api/newlocation',    requireAuth, ServerLocationCtrl.newLocation);
 
 //-- Get All Locations 
 app.get('/api/getlocations', ServerLocationCtrl.getLocations);
 
 //-- Get Single Location
-app.get('/api/getlocation/:_id', ServerLocationCtrl.getLocation);
+app.get('/api/getlocation/:_id', requireAuth, ServerLocationCtrl.getLocation);
 
 //@-@-@-@-@-@-@-@-@-@ - User Location - @-@-@-@-@-@-@-@-@-@
 

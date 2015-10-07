@@ -20,4 +20,23 @@ app.service('newLocationService', function($http, $state){
 			return response.data
 		});
 	};
+
+	this.addLocationToUser = function(userId, locationId){
+		return $http({
+			method: 'POST',
+			url: "http://localhost:9000/api/users/" + userId + "/locations/" + locationId
+		})
+	}
 });
+
+
+
+
+
+
+
+
+
+
+
+

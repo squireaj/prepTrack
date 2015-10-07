@@ -11,6 +11,8 @@ var userSchema = new Schema({
 	name: {type: String},
 	email: {type: String},
 	password: {type: String},
+	age: {type: Number},
+	gender: {type: String},
 	locations: [{type: mongoose.Schema.Types.ObjectId, ref: 'Location'}]
 });
 

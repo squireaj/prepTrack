@@ -9,6 +9,8 @@ app.service('newObjectService', function($http, $state){
 			data: data
 		}).then(function(response){
 			return response
+		}, function(err){
+			console.log(err)
 		})
 	}
 });
