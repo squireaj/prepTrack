@@ -33,7 +33,7 @@ app.controller('HomeCtrl', function($scope, $state, newLocationService, userServ
 	};
 
 	$scope.toDash = function(){
-		$state.go('dash', {userId: $scope.user._id});
+		$state.go('dash', {userId: $scope.user._id, userName: $scope.user.name});
 	}
 
 });			

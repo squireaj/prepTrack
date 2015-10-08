@@ -22,12 +22,15 @@ var app = angular.module('prepTrack', ['ui.router']);
         }
       })
       .state('dash', {
-        url: '/dash/:userId',
+        url: '/dash/:userId/:userName/',
         templateUrl: 'app/dash/dash.html',
         controller: 'DashCtrl',
         resolve: {
           userLocations: function(dashService, $stateParams){
             return dashService.getUserLocations($stateParams.userId);
+          },
+          user: function($stateParams){
+            return $stateParams.userName;
           }
         }
       })

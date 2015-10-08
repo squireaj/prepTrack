@@ -1,7 +1,8 @@
 'use strict';
 var app = angular.module('prepTrack');
-app.controller('DashCtrl', function($scope, $state, userLocations
+app.controller('DashCtrl', function($scope, $state, userLocations, user
 	){
 	console.log(userLocations)
-	$scope.locations = userLocations[0].locationTitle
+	$scope.locations = userLocations;
+	$scope.user = user;
 });
