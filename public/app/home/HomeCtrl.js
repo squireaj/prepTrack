@@ -9,6 +9,9 @@ app.controller('HomeCtrl', function($scope, $state, newLocationService, userServ
 		userService.signUp(name, email, password).then(function(res){
 			console.log(res);
 			$scope.logIn(email, password)
+			$scope.name = '';
+			$scope.email = '';
+			$scope.password = '';
 		})
 	}
 
@@ -16,6 +19,8 @@ app.controller('HomeCtrl', function($scope, $state, newLocationService, userServ
 		userService.login(email, password).then(function(res){
 			$scope.user = res.data;
 			$scope.isuser = true
+			$scope.logemail = '';
+			$scope.logpassword = '';
 		}, function(err){
 			console.log("You were not logged in - " + err)
 		})

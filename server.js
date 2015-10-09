@@ -146,6 +146,11 @@ app.get('/api/auth/logout', function(req, res) {
     return res.redirect('/#login');
 });
 
+//-- Get User
+app.get('/api/auth/getUser', function(req, res){
+    if(req.user){return req.user}else{res.status(403).end()}
+})
+
 //- - - ServerLocationCtrl.js - - -
 
 //@-@-@-@-@-@-@-@-@-@ - General Location - @-@-@-@-@-@-@-@-@-@
