@@ -1,8 +1,9 @@
-<h1>{{user}}'s Locations</h1>
+<h1>{{user.name}}'s Locations</h1>
 <form ng-submit="createNewLocation(location);">
 <input type="text" placeholder="Location Name" ng-model="location.locationTitle">
 <button>Create</button>
 </form>
 <div ng-repeat="location in locations">
-<h2>{{location.locationTitle}}</h2>
+<h2 ng-click="toLocation(location)">{{location.locationTitle}}</h2>
+<button ng-click="deleteLocation(location._id)">Delete</button>
 </div>

@@ -60,6 +60,23 @@ module.exports = {
        });
       },
 
+//-- Delete location from user
+
+   deleteLocation: function(req, res) {
+    Location.remove({ _id: req.params.Location_id}, function(err){
+        if (err) {
+          console.log("can't delete place", err);
+        }
+        res.status(200);
+      }),
+    User.findByIdAndUpdate(req.params.User_id, {$pull: {locations: req.params.Location_id}}, {new: true}, function(err, user){
+      if (err) {
+        return res.status(500).end()
+      }
+      res.status(200).send(user)
+    });
+    },
+
 //-- Get Users Locations 
 
     getUsersLocations: function(req, res) {

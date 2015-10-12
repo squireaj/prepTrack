@@ -9,7 +9,17 @@ var foodItem = require('./objectModel');
 var locationSchema = new mongoose.Schema({
 	"owner": String,
 	"locationTitle": String,
-	"objects": [],
+	"objects": [{
+	"owner": String,
+	"location": String,
+	"category": String,
+	"title" : String,
+	"protein" : Number,
+	"carbs" : Number,
+	"fat" : Number,
+	"count" : Number,
+	"exDate": {type: Date }
+}],
 	"subLocations": [] 
 });
 

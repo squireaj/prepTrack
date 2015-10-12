@@ -22,11 +22,20 @@ app.service('newLocationService', function($http, $state){
 	};
 
 	this.addLocationToUser = function(userId, locationId){
+		console.log(userId, locationId)
 		return $http({
 			method: 'POST',
 			url: "http://localhost:9000/api/users/" + userId + "/locations/" + locationId
 		})
-	}
+	};
+
+	this.deleteLocation = function(userId, locationId){
+		console.log(userId, locationId)
+		return $http({
+			method: 'DELETE',
+			url: "http://localhost:9000/api/deletelocation/" + userId + "/location/" + locationId
+		})
+	};
 });
 
 

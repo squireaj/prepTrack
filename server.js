@@ -148,7 +148,7 @@ app.get('/api/auth/logout', function(req, res) {
 
 //-- Get User
 app.get('/api/auth/getUser', function(req, res){
-    if(req.user){return req.user}else{res.status(403).end()}
+    if(req.user){return res.status(200).json(req.user)}else{res.status(403).end()}
 })
 
 //- - - ServerLocationCtrl.js - - -
@@ -164,6 +164,9 @@ app.get('/api/getlocations', ServerLocationCtrl.getLocations);
 //-- Get Single Location
 app.get('/api/getlocation/:_id', requireAuth, ServerLocationCtrl.getLocation);
 
+//-- Delete Single Location
+app.delete('/api/deletelocation/:User_id/location/:Location_id', ServerLocationCtrl.deleteLocation)
+
 //@-@-@-@-@-@-@-@-@-@ - User Location - @-@-@-@-@-@-@-@-@-@
 
 //-- Add location to user
@@ -176,8 +179,12 @@ app.get('/api/users/:User_id', ServerLocationCtrl.getUsersLocations);
 
 //@-@-@-@-@-@-@-@-@-@ - Object - @-@-@-@-@-@-@-@-@-@
 
-//-- Create New Object and add to Location
-app.post('/api/locations/:User_id', ServerObjectCtrl.addObjectToLocation);
+//--Create New Object
+
+app.post('/api/objects', ServerObjectCtrl.newObject)
+
+//-- Add Object to Location
+app.post('/api/locations/:Location_id', ServerObjectCtrl.addObjectToLocation);
 
 
 

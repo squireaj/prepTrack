@@ -18,19 +18,26 @@ var app = angular.module('prepTrack', ['ui.router']);
         resolve: {
           newLocation: function(newLocationService, $stateParams){
             return newLocationService.getLocation($stateParams.locationId);
+          },
+          user: function(userService){
+            return userService.getUser().then(function(res){
+              return res
+             })
           }
         }
       })
       .state('dash', {
-        url: '/dash/:userId/:userName/',
+        url: '/dash/:userId',
         templateUrl: 'app/dash/dash.html',
         controller: 'DashCtrl',
         resolve: {
           userLocations: function(dashService, $stateParams){
             return dashService.getUserLocations($stateParams.userId);
           },
-          user: function($stateParams){
-            return $stateParams.userName;
+          user: function(userService){
+            return userService.getUser().then(function(res){
+              return res
+             })
           }
         }
       })

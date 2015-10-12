@@ -4,9 +4,9 @@ app.service('userService', function($http, $state){
 	this.getUser = function(){
 		return $http({
 			method: 'GET',
-			url: "http://localhost:9000/api/getUser"
+			url: "http://localhost:9000/api/auth/getUser"
 		}).then(function(res){
-			return res
+			return res.data
 		})
 	};
 	this.signUp = function(name, email, password){
