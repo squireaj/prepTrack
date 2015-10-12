@@ -1,6 +1,6 @@
 <h1>{{locationTitle}}</h1>
 <h3>Add a new item</h3>
-<button ng-click="toLocation()">Dashboard</button>
+<button ng-click="toDash()">Dashboard</button>
 <form>
 	<input type="text" placeholder="Item Title" ng-model="item.title">
 	<input type="text" placeholder="Grams of Carbs" ng-model="item.carbs">
@@ -8,3 +8,9 @@
 	<input type="text" placeholder="Grams of Fat" ng-model="item.fat">
 	<button ng-click="createNewItem(item)">create</button>
 </form>
+<div ng-repeat="object in objects">
+	<ul>
+		<li>{{object.title}}<button ng-click="deleteObject(object._id)">Delete</button></li>
+		<li>{{object.carbs}}</li>
+	</ul>
+</div>

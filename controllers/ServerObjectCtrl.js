@@ -47,25 +47,61 @@ module.exports = {
 			})
 		})
 	})
+  },
+
+  //-- Remove Object from Location
+
+  removeObjectFromLocation: function(req, res){
+  	console.log(req.params.Object_id, req.params.Location_id)
+  	Object.remove({ _id: req.params.Object_id}, function(err){
+  		if(err){
+  			console.log("can't delete object", err);
+  		}
+  		res.status(200);
+  		}),
+  	Location.findByIdAndUpdate(req.params.Location_id, {$pull: {objects: req.params.Object_id}}, function(err, user){
+  		if(err) {
+  			return res.status(500).end()
+  		}
+  		res.status(200).send(user)
+  	});
   }
 }
 
 
-// app.post('/api/users/me/favorite_places', requireAuth, function(req, res) {
-// 	//grab the place
-// 	Place.findOne({ _id: req.body._id }).exec().then(function(place) {
-// 		if (!place) {
-// 			return res.status(404).end();
-// 		}
-// 		//update the user with the favorite_place
-// 		User.findOne({ _id: req.user._id }).exec().then(function(user) {
-// 			user.favorite_places.push(place);
-// 			user.save(function(err) {
-// 				if (err) {
-// 					console.log("can't add place to user");
-// 				}
-// 				return res.json(user);
-// 			});
-// 		});
-// 	});
-// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

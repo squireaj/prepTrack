@@ -15,7 +15,6 @@ app.service('newObjectService', function($http, $state){
 	}
 
 	this.addItemToLocation = function(data, locationId){
-		console.log(data)
 		return $http({
 			method: 'POST',
 			url:"http://localhost:9000/api/locations/" + locationId,
@@ -26,4 +25,31 @@ app.service('newObjectService', function($http, $state){
 			console.log(err)
 		})
 	}
+
+	this.removeItemFromLocation = function(objectId, locationId){
+		console.log("also Ran")
+		console.log(objectId, locationId)
+		return $http({
+			method: 'DELETE',
+			url: "http://localhost:9000/api/deleteobject/" + objectId + "/" + locationId
+		}).then(function(res){
+			return res
+		}, function(err){
+			console.log("could not remove" + err)
+		})
+	}
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+

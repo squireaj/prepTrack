@@ -186,6 +186,12 @@ app.post('/api/objects', ServerObjectCtrl.newObject)
 //-- Add Object to Location
 app.post('/api/locations/:Location_id', ServerObjectCtrl.addObjectToLocation);
 
+//-- Remove Object from Location
+
+app.delete('/api/deleteobject/:Object_id/:Location_id', ServerObjectCtrl.removeObjectFromLocation)
+
+
+
 
 
 
