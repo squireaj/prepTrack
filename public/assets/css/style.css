@@ -1,0 +1,12 @@
+$superCoolBlue: #928374
+
+body 
+	color: red
+
+.black 
+	color: black
+
+.post 
+	.huge 
+		color: $superCoolBlue
+

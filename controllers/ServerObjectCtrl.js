@@ -52,18 +52,19 @@ module.exports = {
   //-- Remove Object from Location
 
   removeObjectFromLocation: function(req, res){
-  	console.log(req.params.Object_id, req.params.Location_id)
+  	console.log("Item to remove", req.params.Object_id, req.params.Location_id)
   	Object.remove({ _id: req.params.Object_id}, function(err){
   		if(err){
   			console.log("can't delete object", err);
   		}
-  		res.status(200);
+  		// res.status(200);
   		}),
-  	Location.findByIdAndUpdate(req.params.Location_id, {$pull: {objects: req.params.Object_id}}, function(err, user){
+  	Location.findByIdAndUpdate(req.params.Location_id, {$pull: {objects: {_id:req.params.Object_id}}}, function(err, location){
   		if(err) {
   			return res.status(500).end()
   		}
-  		res.status(200).send(user)
+  		console.log('Where is the Error?', location)
+  		res.status(200).send(location)
   	});
   }
 }

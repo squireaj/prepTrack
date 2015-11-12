@@ -6,10 +6,15 @@ app.controller('NewLocationCtrl', function($scope, $state, newLocation, newObjec
 	$scope.objects = newLocation.objects;
 	$scope.createNewItem = function(item){
 		newObjectService.createNewItem(item).then(function(data){
-			newObjectService.addItemToLocation(data.data, newLocation._id);
-			newLocationService.getLocation(newLocation._id).then(function(res){
-				$scope.objects = res.objects;
-			})
+			newObjectService.addItemToLocation(data.data, newLocation._id).then(function(res){
+					newLocationService.getLocation(newLocation._id).then(function(res){
+					$scope.objects = res.objects;
+					$scope.item.title = '';
+					$scope.item.carbs = '';
+					$scope.item.protien = '';
+					$scope.item.fat = '';
+				})
+			});
 		})
 	};
 	$scope.toDash = function(){
@@ -18,7 +23,11 @@ app.controller('NewLocationCtrl', function($scope, $state, newLocation, newObjec
 
 	$scope.deleteObject = function(objectId){
 		console.log("ran")
-		newObjectService.removeItemFromLocation(objectId, newLocation._id)
+		newObjectService.removeItemFromLocation(objectId, newLocation._id).then(function(res){
+			newLocationService.getLocation(newLocation._id).then(function(res){
+				$scope.objects = res.objects;
+			})
+		})
 	}
 
 	// $scope.deleteLocation = function(location_id){

@@ -31,6 +31,12 @@ app.use(session({
     saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+//Dallins test 
+app.use(function(req,res,next){
+ console.log('Request Object:');
+ console.log('Session ID:', req.session.id);
+ next();
+});
 
 
 //**********        *             *        **********
@@ -40,6 +46,7 @@ app.use(passport.session());
 var ServerLocationCtrl = require('./controllers/ServerLocationCtrl');
 var ServerObjectCtrl = require('./controllers/ServerObjectCtrl');
 var ServerUserCtrl = require('./controllers/ServerUserCtrl');
+var ServerMacroCtrl = require('./controllers/ServerMacroCtrl')
 
 //**********        *        *        **********
 //******************* Models *******************
@@ -151,7 +158,7 @@ app.get('/api/auth/getUser', function(req, res){
     if(req.user){return res.status(200).json(req.user)}else{res.status(403).end()}
 })
 
-//- - - ServerLocationCtrl.js - - -
+//  !!!  - - - ServerLocationCtrl.js - - -
 
 //@-@-@-@-@-@-@-@-@-@ - General Location - @-@-@-@-@-@-@-@-@-@
 
@@ -175,7 +182,7 @@ app.post('/api/users/:User_id/locations/:Location_id', ServerLocationCtrl.pushLo
 //-- Get Users Locations 
 app.get('/api/users/:User_id', ServerLocationCtrl.getUsersLocations);
 
-//- - - ServerObjectCtrl.js - - -
+// !!! - - - ServerObjectCtrl.js - - -
 
 //@-@-@-@-@-@-@-@-@-@ - Object - @-@-@-@-@-@-@-@-@-@
 
@@ -190,6 +197,9 @@ app.post('/api/locations/:Location_id', ServerObjectCtrl.addObjectToLocation);
 
 app.delete('/api/deleteobject/:Object_id/:Location_id', ServerObjectCtrl.removeObjectFromLocation)
 
+// !!! - - - macroController.js - - - 
+
+app.put('/api/updateUsersMacros', ServerMacroCtrl.updateUsersMacros)
 
 
 
@@ -201,7 +211,14 @@ app.delete('/api/deleteobject/:Object_id/:Location_id', ServerObjectCtrl.removeO
 
 
 
-
+// Contact.findByIdAndUpdate(
+//     info._id,
+//     {$push: {"messages": {title: title, msg: msg}}},
+//     {safe: true, upsert: true},
+//     function(err, model) {
+//         console.log(err);
+//     }
+// );
 
 
 

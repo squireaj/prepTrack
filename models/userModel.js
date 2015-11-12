@@ -13,6 +13,10 @@ var userSchema = new Schema({
 	password: {type: String},
 	age: {type: Number},
 	gender: {type: String},
+	calories: {type: Number},
+	protein : {type: Number},
+	carbs : {type: Number},
+	fat : {type: Number},
 	locations: [{type: mongoose.Schema.Types.ObjectId, ref: 'Location'}]
 });
 

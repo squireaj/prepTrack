@@ -8,7 +8,7 @@
 	<input type="text" placeholder="Grams of Fat" ng-model="item.fat">
 	<button ng-click="createNewItem(item)">create</button>
 </form>
-<div ng-repeat="object in objects">
+<div ng-repeat="object in objects track by $index">
 	<ul>
 		<li>{{object.title}}<button ng-click="deleteObject(object._id)">Delete</button></li>
 		<li>{{object.carbs}}</li>

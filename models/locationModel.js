@@ -14,6 +14,7 @@ var locationSchema = new mongoose.Schema({
 	"location": String,
 	"category": String,
 	"title" : String,
+	"calories": Number,
 	"protein" : Number,
 	"carbs" : Number,
 	"fat" : Number,
