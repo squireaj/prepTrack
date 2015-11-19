@@ -21,6 +21,9 @@ var locationSchema = new mongoose.Schema({
 	"count" : Number,
 	"exDate": {type: Date }
 }],
+	"calories": Number,
+	"protein" : Number,
+	"carbs" : Number,
 	"subLocations": [] 
 });
 

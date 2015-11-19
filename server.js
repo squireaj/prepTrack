@@ -70,7 +70,7 @@ mongoose.connection.once('open', function() {
 //******************* Port *******************
 //**********        *      *        ********** 
 
-var port = process.env.EXPRESS_PORT || 8080; 
+var port = 8080; 
 app.listen(port, function(){
     console.log("The Wolverine Pack is hunting on port ", port); 
 });
@@ -203,22 +203,6 @@ app.put('/api/updateUsersMacros', ServerMacroCtrl.updateUsersMacros)
 
 
 
-
-
-
-
-
-
-
-
-// Contact.findByIdAndUpdate(
-//     info._id,
-//     {$push: {"messages": {title: title, msg: msg}}},
-//     {safe: true, upsert: true},
-//     function(err, model) {
-//         console.log(err);
-//     }
-// );
 
 
 
